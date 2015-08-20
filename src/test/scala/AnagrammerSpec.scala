@@ -32,4 +32,10 @@ class AnagrammerSpec extends FlatSpec with Matchers {
     batsAnagrams2 should contain ("stab")
   }
 
+  it should "keep track of duplicate characters when computing anagrams" in {
+    val anagrammer = new Anagrammer(Set("banana"))
+    val banAnagrams = anagrammer.getAnagrams("ban")
+    banAnagrams should have size 0
+  }
+
 }
