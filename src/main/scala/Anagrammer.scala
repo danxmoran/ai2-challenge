@@ -1,12 +1,18 @@
 /**
  * Class responsible for producing anagrams of strings
  */
-class Anagrammer(val dictionary: Set[String]) {
+class Anagrammer(dictionary: Set[String]) {
 
   /**
-   * Cache for previously-computed anagrams, to avoid repeated computation.
+   * Computing all anagrams for a given word has horrible asymptotic efficiency,
+   * especially when most of the anagrams will end up being filtered out by the
+   * dictionary check.
+   *
+   * Instead of doing that, use the fact that if two strings are anagrams
+   * they contain the exact same set of characters, and group the dictionary
+   * words according to their character sets for later access.
    */
-  var anagramCache = Map[List[Char], List[String]]()
+  val anagramCache = dictionary.groupBy[Set[Char]] { _.toSet[Char] }
 
   /**
    * Get all valid anagrams for a given word.
@@ -14,17 +20,7 @@ class Anagrammer(val dictionary: Set[String]) {
    * @param word The word to compute anagrams from.
    * @return All anagrams of the given word that exist in this object's dictionary.
    */
-  def getAnagrams(word: String): List[String] = {
-
-    val chars = word.toList.sorted
-    this.anagramCache.getOrElse(chars, {
-      val anagrams = chars.permutations
-        .map(_.mkString)
-        .filter(this.dictionary.contains(_))
-        .toList
-      this.anagramCache += chars -> anagrams
-      anagrams
-    })
-  }
+  def getAnagrams(word: String): Set[String] =
+    this.anagramCache.getOrElse(word.toSet[Char], { Set[String]() })
 
 }
