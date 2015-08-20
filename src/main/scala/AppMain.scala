@@ -46,8 +46,13 @@ object AppMain {
           val anagrammer = new Anagrammer(set)
           arguments.words.foreach { word =>
             println(s"WORD: '$word'")
-            println("ANAGRAMS:")
-            anagrammer.getAnagrams(word) foreach println
+            val anagrams = anagrammer.getAnagrams(word)
+            if (anagrams.nonEmpty) {
+              println("ANAGRAMS:")
+              anagrams foreach println
+            } else {
+              println("NO VALID ANAGRAMS")
+            }
             println()
           }
         }
