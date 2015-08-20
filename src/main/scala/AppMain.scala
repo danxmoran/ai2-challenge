@@ -26,7 +26,7 @@ object AppMain {
      */
     case class Args(words: Seq[String] = Seq(), dictFile: File = new File("."))
 
-    val argParser = new OptionParser[Args]("anagram") {
+    val argParser = new OptionParser[Args]("java -jar anagram.jar") {
       head("AI2-challenge: The Anagrammer")
 
       arg[String]("<word1> <word2> ...") unbounded() action { (word, args) =>

@@ -24,13 +24,14 @@ your machine, build the challenge solution by moving into the project directory
 and running:
 
 ```bash
-sbt one-jar
+$ sbt one-jar
 ```
 
-This will generate a standalone JAR file containing the solution. Run it with:
+This will generate a standalone JAR file ```anagram.jar``` in
+```target/scala-2.11``` containing the solution. Run it with:
 
 ```bash
-java -jar target/scala-2.11/anagram.jar -d <filename> <word1> <word2> ...
+$ java -jar target/scala-2.11/anagram.jar -d <filename> <word1> <word2> ...
 
   <word1> <word2> ...
         words from which anagrams should be derived
