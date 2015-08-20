@@ -12,3 +12,4 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
 resolvers += Resolver.sonatypeRepo("public")
 
 mainClass := Some("AppMain")
+artifactName in oneJar := { (_, _, _) => "anagram" }

@@ -16,4 +16,24 @@ was as follows:
 Running the solution
 --------------------
 
-TODO
+The project is managed and build using sbt. Instructions on downloading and
+installing sbt can be found here: http://www.scala-sbt.org/download.html
+
+Once sbt is up and running and the project has been cloned / unzipped onto
+your machine, build the challenge solution by moving into the project directory
+and running:
+
+```bash
+sbt one-jar
+```
+
+This will generate a standalone JAR file containing the solution. Run it with:
+
+```bash
+java -jar target/scala-2.11/anagram -d <filename> <word1> <word2> ...
+
+  <word1> <word2> ...
+        words from which anagrams should be derived
+  -d <filename> | --dictionary <filename>
+        file containing valid anagrams, one per line
+```
